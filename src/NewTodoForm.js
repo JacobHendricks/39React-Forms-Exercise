@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 
 const NewTodoForm = ({ addTodo }) => {
   const INITIAL_STATE = {
-    todo: '',
+    task: '',
   }
 
   const [formData, setFormData] = useState(INITIAL_STATE);
@@ -18,13 +18,13 @@ const NewTodoForm = ({ addTodo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addTodo({ ...formData, id: uuid() });
-    setFormData("");
+    setFormData(INITIAL_STATE);
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="task">Task:</label>
-      <input id="task" type="text" name="task" value={formData.name} onChange={handleChange}
+      <input id="task" type="text" name="task" value={formData.task} onChange={handleChange}
       />
       <button>Add a todo!</button>
     </form>
